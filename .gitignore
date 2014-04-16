@@ -36,3 +36,5 @@ Debug
 *.tlog
 *.cache
 *.user
+RemoteSystemsTempFiles/*
+
