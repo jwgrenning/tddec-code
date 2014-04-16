@@ -1,21 +1,38 @@
-# Compiled Object files
-*.slo
-*.lo
+.DS_Store
+*.swp
+*.*~
+.*~
+*.d
 *.o
-*.obj
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
-*.lib
-
-# Executables
+.settings
+gcov_*.txt
+*.gcov
+*.gcno
+*.gcda
+*_tests
+*a.out
+*.zip
+tmp
+gcov
+objs
+lib
+*_tests.txt
+gcov*.html
+.metadata
+Debug
+*/Debug/*
 *.exe
-*.out
-*.app
+*.obj
+*.ncb
+*.opt
+*.plg
+*.idb
+*.pdb
+*.sou
+*.sdf
+*.lib
+*.log
+*.tlog
+*.cache
+*.user
