@@ -100,5 +100,21 @@ not have code include tags.  In this book, the code is always evolving.  I've le
 the latest version at the top of the file and move the intermediate code snippets 
 further down the file.    
 
+-----------------
+SandBox - project
+-----------------
+
+Here is a project ready for you to experiment with CppUTest any my version of Unity
+
+--------------------------
+About Unity test framework
+--------------------------
+
+The version in the book is not the supported version maintained by the guys at
+throwtheswitch.com.  If you want a supported version, please go to throwtheswitch.com
+
+
+
+
 Please report any problems on the book's forum: www.pragprog.com/titles/jgade.
 
