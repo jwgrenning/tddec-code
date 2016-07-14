@@ -11,8 +11,19 @@ the structure so that there are no projects inside of projects.
 Instructions for building the book's code
 -----------------------------------------
 
-1) Download and build CppUTest from cpputest.org. Put CppUTest somewhere like
+The CppUTest install has changed a lot since my book was written.  So you'll have 
+to install CppUTest locally for use with the book code.
+
+1) Download CppUTest from cpputest.org. Put CppUTest somewhere like
     ~/tools/cpputest
+
+2) Build CppUTest locally
+
+```
+cd ~/tools/cpputest
+./configure
+make tdd
+```
 
 2) Define an environment variable to point to where you put CppUTest, like
 
