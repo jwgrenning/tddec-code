@@ -25,13 +25,13 @@ cd ~/tools/cpputest
 make tdd
 ```
 
-2) Define an environment variable to point to where you put CppUTest, like
+3) Define an environment variable to point to where you put CppUTest, like
 
     % export CPPUTEST_HOME=~/tools/cpputest
 
     Under windows you can use the control panel to set the environment variable.
 
-3) Unzip the code into some directory /path/to/code/root. Make sure the path contains no spaces.
+4) Unzip the code into some directory /path/to/code/root. Make sure the path contains no spaces.
 You should end up with this:
     /path/to/code/root/code
     /path/to/code/root/code-t0
@@ -40,7 +40,7 @@ You should end up with this:
     /path/to/code/root/code-t3
     /path/to/code/root/SandBox
 
-4) Build the examples
+5) Build the examples
 
 -------------
 For gcc users
