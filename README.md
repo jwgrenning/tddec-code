@@ -15,30 +15,37 @@ The CppUTest install has changed a lot since my book was written.  So you'll hav
 to install CppUTest locally for use with the book code.
 
 1) Download CppUTest from cpputest.org. Put CppUTest somewhere like
-    ~/tools/cpputest
+    `~/tools/cpputest`
 
-2) Build CppUTest locally
+2) Build CppUTest locally using these instructions not the instructions 
+from cpputest.org.
 
 ```
-cd ~/tools/cpputest
-./configure
-make tdd
+% cd ~/tools/cpputest
+% ./configure
+% make tdd
 ```
 
 3) Define an environment variable to point to where you put CppUTest, like
 
-    % export CPPUTEST_HOME=~/tools/cpputest
+```
+export CPPUTEST_HOME=~/tools/cpputest
+```
 
-    Under windows you can use the control panel to set the environment variable.
+Under windows you can use the control panel to set the environment variable.  Make sure
+to restart your IDE, or terminal window.
 
 4) Unzip the code into some directory /path/to/code/root. Make sure the path contains no spaces.
-You should end up with this:
+You should end up with this directory structure:
+
+```
     /path/to/code/root/code
     /path/to/code/root/code-t0
     /path/to/code/root/code-t1
     /path/to/code/root/code-t2
     /path/to/code/root/code-t3
     /path/to/code/root/SandBox
+```
 
 5) Build the examples
 
@@ -46,18 +53,24 @@ You should end up with this:
 For gcc users
 -------------
 Build all examples
-    % cd /path/to/code/root
-    % make
 
+```
+% cd /path/to/code/root
+% make
+```
 
 Clean all
-    % cd /path/to/code/root
-    % make
 
+```
+% cd /path/to/code/root
+% make
+```
 To make a specific project from the command line (code-t0 for example)
 
-    cd /path/to/code/root/code-t0
-    make
+```
+cd /path/to/code/root/code-t0
+make
+```
 
 -----------------
 For eclipse users
@@ -78,6 +91,9 @@ For visual studio users
     The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date.
     I may work on this.  If you want to make Visual Studio support files for some or all of
     the projects, please fork the repo make the changes and send me a pull request.
+
+
+6) Reading the code
 
 -------------
 For everybody
@@ -111,6 +127,8 @@ not have code include tags.  In this book, the code is always evolving.  I've le
 the latest version at the top of the file and move the intermediate code snippets 
 further down the file.    
 
+7) Experiment
+
 -----------------
 SandBox - project
 -----------------
@@ -123,8 +141,6 @@ About Unity test framework
 
 The version in the book is not the supported version maintained by the guys at
 throwtheswitch.com.  If you want a supported version, please go to throwtheswitch.com
-
-
 
 
 Please report any problems on the book's forum: www.pragprog.com/titles/jgade.

@@ -24,7 +24,7 @@
 /*-    www.renaissancesoftware.net james@renaissancesoftware.net       -*/
 /*- ------------------------------------------------------------------ -*/
 
-#include "MicroTime.h"
+#include "FakeMicroTime.h"
 #include <stdlib.h>
 #include <memory.h>
 

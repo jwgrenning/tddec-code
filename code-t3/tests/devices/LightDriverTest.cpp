@@ -25,16 +25,16 @@ extern "C"
 
 static void null(LightDriver self) {}
 
-LightDriverInterfaceStruct doNothing =
+static LightDriverInterfaceStruct doNothing =
 {
-       null, null, null
+   null, null, null
 };
 
-LightDriverStruct testDriver =
+static LightDriverStruct testDriver =
 {
-        &doNothing,
-        "testDriver",
-        13
+    &doNothing,
+    "testDriver",
+    13
 };
 
 TEST_GROUP(LightDriver)

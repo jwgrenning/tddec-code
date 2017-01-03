@@ -15,7 +15,7 @@ CPP_PLATFORM = Gcc
 UNITY_BUILD_HOME = unity.framework/extras/fixture/build
 
 UNITY_CFLAGS += -DUNITY_OUTPUT_CHAR=UnityOutputCharSpy_OutputChar
-UNITY_WARNINGFLAGS = -Wall -Werror -Wswitch-default
+UNITY_WARNINGFLAGS = -Wall -Werror -Wswitch-default -Wno-missing-prototypes
 #UNITY_WARNINGFLAGS += -Wshadow 
 
 SRC_DIRS = \

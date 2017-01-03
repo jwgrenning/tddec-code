@@ -34,7 +34,7 @@ typedef Thread * ThreadTableEntry;
 void MyOs_Init(int maxT)
 {
      maxThreads = maxT;
-     threadTable = calloc(maxThreads, sizeof(Thread));
+     threadTable = calloc((size_t)maxThreads, sizeof(Thread));
 }
 
 void MyOs_ShutDown(void)

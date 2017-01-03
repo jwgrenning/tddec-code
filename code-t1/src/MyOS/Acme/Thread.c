@@ -59,7 +59,7 @@ void Thread_Start(Thread self)
     AcmeThread_start(&self->acmeThread);
 }
 
-BOOL FindAcmeThread(Thread thread, void * acmeThread)
+static BOOL FindAcmeThread(Thread thread, void * acmeThread)
 {
     return &thread->acmeThread == (AcmeThread)acmeThread;
 }

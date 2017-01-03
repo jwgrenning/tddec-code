@@ -76,6 +76,17 @@ TEST_GROUP(RtcTime)
         return days;
     }
 
+    int daysSince1954ForYear(int endYear)
+    {
+        int days = 0;
+
+        for (int year = 1954; year < endYear; year++)
+        {
+            days += daysForYear(year);
+        }
+        return days;
+    }
+
 
 };
 
@@ -176,3 +187,4 @@ TEST(RtcTime, 2100_3_1_not_leap_year)
     rtcTime = RtcTime_Create(yearStart+31+28+1);
     assertDate(2100, 3, 1, Monday);
 }
+

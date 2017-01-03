@@ -30,7 +30,7 @@ extern "C"
 void IO_Write(ioAddress addr, ioData value)
 {
     mock_c()->actualCall("IO_Write")
-            ->withIntParameters("addr", addr)
+            ->withIntParameters("addr", (int)addr)
             ->withIntParameters("value", value);
 }
 // END: IO_Write
@@ -39,9 +39,9 @@ void IO_Write(ioAddress addr, ioData value)
 ioData IO_Read(ioAddress addr)
 {
     mock_c()->actualCall("IO_Read")
-            ->withIntParameters("addr", addr);
+            ->withIntParameters("addr", (int)addr);
 
-   return mock_c()->returnValue().value.intValue;
+   return (ioData)mock_c()->returnValue().value.intValue;
 }
 // END: IO_Read
 
@@ -212,7 +212,7 @@ TEST(Flash, WriteSucceeds_IgnoresOtherBitsUntilReady)
 {
     expectCommand(ProgramCommand);
     expectWriteData();
-    simulateDeviceStatus(~ReadyBit);
+    simulateDeviceStatus((ioData)~ReadyBit);
     simulateDeviceStatus(ReadyBit);
     simulateReadback(data);
 
@@ -229,7 +229,7 @@ TEST(Flash, WriteFails_Timeout)
     Flash_Create();
     expectCommand(ProgramCommand);
     expectWriteData();
-    simulateDeviceStatusWithRepeat(~ReadyBit, 10);
+    simulateDeviceStatusWithRepeat((ioData)~ReadyBit, 10);
 
     result = Flash_Write(address, data);
 
@@ -245,7 +245,7 @@ TEST(Flash, WriteFails_TimeoutAtEndOfTime)
     expectCommand(ProgramCommand);
     expectWriteData();
     for (int i = 0; i < 10; i++)
-        simulateDeviceStatus(~ReadyBit);
+        simulateDeviceStatus((ioData)~ReadyBit);
 
     result = Flash_Write(address, data);
 

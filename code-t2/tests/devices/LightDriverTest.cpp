@@ -39,14 +39,14 @@ TEST_GROUP(LightDriver)
 static LightDriver savedDriver = NONSENSE_POINTER;
 static void shouldNotBeCalled(LightDriver self) { savedDriver = self ;}
 
-LightDriverInterfaceStruct interface =
+static LightDriverInterfaceStruct interface =
 {
     shouldNotBeCalled,
     shouldNotBeCalled,
     shouldNotBeCalled
 };
 
-LightDriverStruct testDriver =
+static LightDriverStruct testDriver =
 {
     "testDriver",
     13

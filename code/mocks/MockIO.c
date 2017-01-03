@@ -30,7 +30,7 @@
 #include "MockIO.h"
 #include "CppUTest/TestHarness_c.h"
 
-#if WIN32
+#ifdef WIN32
 #define snprintf _snprintf
 #endif
 

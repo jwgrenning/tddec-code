@@ -45,7 +45,7 @@ typedef struct
 {
     int id;
     Day day;
-    long int minuteOfDay;
+    int minuteOfDay;
     int event;
     int randomize;
     int randomMinutes;
@@ -73,7 +73,7 @@ static void resetRandomize(ScheduledLightEvent * e);
 
 #if 1 
 static void setEventSchedule(ScheduledLightEvent * event,
-        int id, Day day, long int minute, int control, int randomize)
+        int id, Day day, int minute, int control, int randomize)
 {
         event->id = id;
         event->day = day;
@@ -123,7 +123,7 @@ static ScheduledLightEvent * findUnusedEvent(void)
 #endif 
 
 #if 1 
-static void scheduleEvent(int id, Day day, long int minute, int control,
+static void scheduleEvent(int id, Day day, int minute, int control,
         int randomize)
 {
 
@@ -135,7 +135,7 @@ static void scheduleEvent(int id, Day day, long int minute, int control,
 #endif 
 
 #if 0 
-static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
+static void scheduleEvent(int id, Day day, int minuteOfDay, int control,
         int randomize)
 {
 
@@ -155,22 +155,22 @@ static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
 #endif 
 
 
-void LightScheduler_ScheduleTurnOn(int id, Day day, long int minute)
+void LightScheduler_ScheduleTurnOn(int id, Day day, int minute)
 {
     scheduleEvent(id, day, minute, TURN_ON, RANDOM_OFF);
 }
 
-void LightScheduler_ScheduleTurnOff(int id, int day, long int minute)
+void LightScheduler_ScheduleTurnOff(int id, int day, int minute)
 {
     scheduleEvent(id, day, minute, TURN_OFF, RANDOM_OFF);
 }
 
-static BOOL matchEvent(ScheduledLightEvent * e, int id, Day day, long int minute)
+static BOOL matchEvent(ScheduledLightEvent * e, int id, Day day, int minute)
 {
     return e->id == id && e->day == day && e->minuteOfDay == minute;
 }
 
-void LightScheduler_Randomize(int id, Day day, long int minute)
+void LightScheduler_Randomize(int id, Day day, int minute)
 {
     int i;
     ScheduledLightEvent * event = eventList;
@@ -185,7 +185,7 @@ void LightScheduler_Randomize(int id, Day day, long int minute)
     }
 }
 
-void LightScheduler_ScheduleRemove(int id, Day day, long int minute)
+void LightScheduler_ScheduleRemove(int id, Day day, int minute)
 {
     int i;
     ScheduledLightEvent * event = eventList;
@@ -214,7 +214,7 @@ static void resetRandomize(ScheduledLightEvent * event)
 }
 
 #if 0 
-static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
+static void scheduleEvent(int id, Day day, int minuteOfDay, int control,
         int randomize)
 {
     int i;
@@ -242,7 +242,7 @@ static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
 #endif 
 
 #if 0 
-static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
+static void scheduleEvent(int id, Day day, int minuteOfDay, int control,
         int randomize)
 {
     int i;
@@ -266,7 +266,7 @@ static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
 #endif 
 
 #if 0 
-static void scheduleEvent(int id, Day day, long int minuteOfDay, int control,
+static void scheduleEvent(int id, Day day, int minuteOfDay, int control,
         int randomize)
 {
     int i;

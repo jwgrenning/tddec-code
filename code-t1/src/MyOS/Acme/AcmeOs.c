@@ -37,10 +37,10 @@
 #include "src/MyOS/Acme/AcmeOs.h"
 
 /* fake implementation to get the tests to pass */
-AcmeThread theThread = 0;
+static AcmeThread theThread = 0;
 int AcmeThread_waitEnd(AcmeThread thread) { return 0; }
 void AcmeThread_start(AcmeThread thread) { thread->entry(thread->parameter); }
-void AcmeThread_nanoSleep(unsigned long ns) {}
+//void AcmeThread_nanoSleep(unsigned long ns) {}
 void AcmeThread_exit(int result) {}
 AcmeThread AcmeThread_currentThread(void) { return theThread; }
 /* End of Acme stubs */

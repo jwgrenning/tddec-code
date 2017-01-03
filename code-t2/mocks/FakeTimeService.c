@@ -26,7 +26,7 @@
 
 #include "FakeTimeService.h"
 
-static long int theMinute;
+static int theMinute;
 static int theDay;
 
 void TimeService_Create(void)

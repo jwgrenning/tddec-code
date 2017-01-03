@@ -30,14 +30,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 #define WINDOWS_VSNPRINTF_OVERWRITE -1
-#if WIN32
+#ifdef WIN32
 #define vsnprintf _vsnprintf
 #endif
 
 #include <stdlib.h>
 #include <stdarg.h>
 static char * buffer = 0;
-static size_t buffer_size = 0;
+static int buffer_size = 0;
 static int buffer_offset = 0;
 static int buffer_used = 0;
 
@@ -45,7 +45,7 @@ void FormatOutputSpy_Create(int size)
 {
     FormatOutputSpy_Destroy();
     buffer_size = size+1;
-    buffer = (char *)calloc(buffer_size, sizeof(char));
+    buffer = (char *)calloc((size_t)buffer_size, sizeof(char));
     buffer_offset = 0;
     buffer_used = 0;
     buffer[0] = '\0';

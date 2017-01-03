@@ -59,7 +59,7 @@ static BOOL IsLedOutOfBounds(int ledNumber)
 
 static uint16_t convertLedNumberToBit(int ledNumber)
 {
-    return 1 << (ledNumber - 1);
+    return (uint16_t)(1 << (ledNumber - 1));
 }
 
 static void updateHardware(void)

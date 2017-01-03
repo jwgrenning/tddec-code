@@ -26,7 +26,7 @@ extern "C"
 
 //START: entry2
 #define NONSENSE_POINTER (void *)~0
-void * threadParameter = NONSENSE_POINTER;
+static void * threadParameter = NONSENSE_POINTER;
 static int threadRan = FALSE;
 #define THREAD_RETURN_CODE 999
 static int returnCode = THREAD_RETURN_CODE;

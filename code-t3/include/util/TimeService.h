@@ -61,5 +61,6 @@ void TimeService_GetTime(Time *);
 
 BOOL Time_MatchesDayOfWeek(Time *, Day day);
 BOOL Time_MatchesMinuteOfDay(Time *, int minute);
+BOOL TimeService_MatchesNow(int reactionDay, int minute);
 
 #endif  /* D_TimeService_H */

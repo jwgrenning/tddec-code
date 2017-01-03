@@ -33,8 +33,6 @@
 #include "MemMappedLightDriver.h"
 #include "common.h"
 
-int lightType = 0;
-
 static LightDriver lightDrivers[MAX_LIGHTS] =
 { NULL };
 

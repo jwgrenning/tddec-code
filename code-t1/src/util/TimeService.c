@@ -34,7 +34,7 @@ void TimeService_Create(void)
 	explodesInTestEnvironment(0);
 }
 
-void TimeService_Destroyvoid(void)
+void TimeService_Destroy(void)
 {
 	/* OS dependent cleanup */
 	explodesInTestEnvironment(0);

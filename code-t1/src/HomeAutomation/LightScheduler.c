@@ -473,7 +473,7 @@ void LightScheduler_WakeUp(void)
 }
 #endif
 
-void processEventsDueNow(Time * time, ScheduledLightEvent * event)
+static void processEventsDueNow(Time * time, ScheduledLightEvent * event)
 {
     if (eventIsReadyToExecute(time, event))
     {
