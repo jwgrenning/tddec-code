@@ -90,7 +90,7 @@ TEST_GROUP(Flash)
 
     void simulateDeviceStatusWithRepeat(ioData status, int repeatCount)
     {
-        mock().expectNCalls(repeatCount, "IO_Read")
+        mock().expectNCalls((unsigned int) repeatCount, "IO_Read")
                 .withParameter("addr", StatusRegister)
                 .andReturnValue((int) status);
     }

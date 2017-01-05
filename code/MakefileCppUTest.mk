@@ -54,10 +54,18 @@ MOCKS_SRC_DIRS = \
 CPPUTEST_WARNINGFLAGS = -Wall -Wswitch-default -Werror 
 CPPUTEST_WARNINGFLAGS += -Wno-missing-prototypes -Wno-format-nonliteral -Wno-sign-conversion -Wno-pedantic 
 CPPUTEST_WARNINGFLAGS += -Wno-shadow -Wno-missing-field-initializers -Wno-unused-parameter
+CPPUTEST_WARNINGFLAGS += -Wno-unknown-warning-option
 #CPPUTEST_CFLAGS = -std=c89 
 CPPUTEST_CFLAGS += -Wall -Wstrict-prototypes -pedantic
 LD_LIBRARIES = -lpthread
 	
-  
+# Temporary setting of C++ flag to ignore C++14 compatability for gcc > 5
+# Should be moved into CPPUTest make file with PR
+CPPUTEST_CXX_WARNINGFLAGS = -Wno-c++14-compat
+# Flags to ignore keywords with OS X (clang and gcc wrapper)
+# Should be moved into CPPUTest make file with PR
+CPPUTEST_CXX_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+CPPUTEST_C_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk
 

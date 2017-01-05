@@ -28,5 +28,15 @@ INCLUDE_DIRS =\
 #CPPUTEST_WARNINGFLAGS += -pedantic-errors -Wconversion -Wshadow  -Wextra
 CPPUTEST_WARNINGFLAGS += -Wall -Werror -Wswitch-default -Wswitch-enum 
 
+# Temporary setting of C++ flag to ignore C++14 compatability for gcc > 5
+# Should be moved into CPPUTest make file with PR
+CPPUTEST_CXX_WARNINGFLAGS = -Wno-c++14-compat
+
+# Temporary setting in Sandbox, CppuTest makefile should also detect clang > 7
+# and set flags.
+ifeq ($(CPP_PLATFORM),clang)
+	CPPUTEST_CXX_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+	CPPUTEST_C_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+endif
 
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

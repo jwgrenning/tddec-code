@@ -19,10 +19,19 @@ CPPUTEST_WARNINGFLAGS += -Werror
 CPPUTEST_WARNINGFLAGS += -Wswitch-default 
 CPPUTEST_WARNINGFLAGS += -Wswitch-enum  
 CPPUTEST_WARNINGFLAGS += -Wno-unused-parameter
+CPPUTEST_WARNINGFLAGS += -Wno-unknown-warning-option
 CPPUTEST_CFLAGS += -std=c99
 CPPUTEST_CFLAGS += -Wextra 
 CPPUTEST_CFLAGS += -pedantic 
 CPPUTEST_CFLAGS += -Wstrict-prototypes
+
+# Temporary setting of C++ flag to ignore C++14 compatability for gcc > 5
+# Should be moved into CPPUTest make file with PR
+CPPUTEST_CXX_WARNINGFLAGS = -Wno-c++14-compat
+# Flags to ignore keywords with OS X (clang and gcc wrapper)
+# Should be moved into CPPUTest make file with PR
+CPPUTEST_CXX_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+CPPUTEST_C_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
 
 SRC_DIRS = \
 	src/*\
