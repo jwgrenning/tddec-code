@@ -24,6 +24,7 @@ extern "C"
 #include "RtcTime.h"
 
 static int lastMonitoredDays;
+void monitorLoop(int days);
 void monitorLoop(int days)
 {
     CHECK(lastMonitoredDays != days);
