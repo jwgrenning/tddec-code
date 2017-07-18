@@ -45,8 +45,9 @@ void TimeService_Destroy(void)
 
 void FakeTimeService_MinuteIsUp(void)
 {
-    if (callback != NULL);
+    if (callback != NULL) {
         callback();
+    }
 }
 
 void TimeService_SetPeriodicAlarmInSeconds(int seconds, WakeupCallback cb)

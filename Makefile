@@ -2,6 +2,8 @@
 #	CppUTest built with extensions
 #	CPPUTEST_HOME defined
 	
+export CPPUTEST_WARNINGFLAGS += -Wno-reserved-id-macro -Wno-keyword-macro
+
 all: 
 	make -i -C code
 	make -i -C code-t0
