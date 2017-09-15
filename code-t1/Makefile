@@ -13,19 +13,6 @@ TEST_TARGET = \
 PROJECT_HOME_DIR = .
 CPP_PLATFORM = Gcc
 
-CPPUTEST_USE_EXTENSIONS = Y
-CPPUTEST_WARNINGFLAGS += -Wall 
-CPPUTEST_WARNINGFLAGS += -Werror 
-CPPUTEST_WARNINGFLAGS += -Wswitch-default 
-CPPUTEST_WARNINGFLAGS += -Wswitch-enum  
-CPPUTEST_WARNINGFLAGS += -Wno-unused-parameter
-CPPUTEST_WARNINGFLAGS += -Wno-shadow
-CPPUTEST_WARNINGFLAGS += -Wno-covered-switch-default
-CPPUTEST_CFLAGS += -std=c99
-CPPUTEST_CFLAGS += -Wextra 
-CPPUTEST_CFLAGS += -pedantic 
-CPPUTEST_CFLAGS += -Wstrict-prototypes
-
 SRC_DIRS = \
 	src/*\
 	src/MyOS/Acme\
@@ -47,5 +34,6 @@ INCLUDE_DIRS =\
   mocks/IO \
   mocks
 
-  
+CPPUTEST_USE_EXTENSIONS = Y
+include ../CppUTestCompileFlags.mk
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

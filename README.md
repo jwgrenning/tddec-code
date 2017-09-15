@@ -50,7 +50,7 @@ You should end up with this directory structure:
 5) Build the examples
 
 -------------
-For gcc users
+For gcc/clang users
 -------------
 Build all examples
 
@@ -71,6 +71,43 @@ To make a specific project from the command line (code-t0 for example)
 cd /path/to/code/root/code-t0
 make
 ```
+
+### Warning problems with gcc/clang
+
+With the compilers adding more and more static analysis, each compiler may issue warnings like this:
+
+```
+#undef __USE_MINGW_ANSI_STDIO
+       ^
+/path/to/tools/cpputest-3.8/include/CppUTest/CppUTestConfig.h:265:9: error: macro name
+      is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define __USE_MINGW_ANSI_STDIO 1
+        ^
+In file included from <built-in>:1:
+/path/to//tools/cpputest-3.8/include/CppUTest/MemoryLeakDetectorNewMacros.h:58:9: error: 
+      keyword is hidden by macro definition [-Werror,-Wkeyword-macro]
+#define new new(__FILE__, __LINE__)
+        ^
+
+```
+
+The `-Werror` flag tells the compiler to treat warning as errors, causing the compile to fail.  You could turn that off, but before you do that, you can tell the compiler to not complain about specific errors.  
+
+For the two errors shown in the above error output, from the (cygwin,mongx, linux, mac) command line set the initial value for `CPPUTEST_WARNINGFLAGS` like this:
+
+```
+export CPPUTEST_WARNINGFLAGS="-Wno-reserved-id-macro -Wno-keyword-macro"
+
+```
+
+Notice that addong "no-" to the warning flags from the error output disables that warning.  Generally this can be used to disable any new warning that comes up.
+
+Run make again.  Once you clear the warnings you should get a clean build. You could add this to `CppUTestCompileFlags.mk`.
+
+
+### Unknown warnings in gcc/clang
+
+If your compiler does not support some warning flag in the released makefiles, you can get an error about it.  The `-Wno-unknown-warning-option` is in `CppUTestCompileFlags.mk`, but may not be supported.  You'll need to comment out each flag the compiler complains about in `CppUTestCompileFlags.mk`.
 
 -----------------
 For eclipse users
