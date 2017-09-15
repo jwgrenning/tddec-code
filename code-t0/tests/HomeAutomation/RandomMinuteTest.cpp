@@ -65,7 +65,7 @@ TEST(RandomMinute, AllValuesPossible)
     int hit[2*BOUND + 1];
     memset(hit, 0, sizeof(hit));
 	int i;
-    for (i = 0; i < 300; i++)
+    for (i = 0; i < 350; i++)
     {
         minute = RandomMinute_Get();
         AssertMinuteIsInRange();

@@ -63,7 +63,7 @@ TEST(RandomMinute, AllValuesPossible)
     int hit[2*Bound + 1];
     memset(hit, 0, sizeof(hit));
 
-    for (int i = 0; i < 300; i++)
+    for (int i = 0; i < 350; i++)
     {
         minute = RandomMinute_Get();
         if (minute < -Bound || minute > Bound)
