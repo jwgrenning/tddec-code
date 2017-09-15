@@ -45,7 +45,7 @@ void TimeService_Destroy(void)
 
 void FakeTimeService_MinuteIsUp(void)
 {
-    if (callback != NULL);
+    if (callback != NULL)
         callback();
 }
 
