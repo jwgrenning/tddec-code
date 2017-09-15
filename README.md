@@ -7,6 +7,8 @@ This directory structure is not exactly the same as the structure
 of the code in Test-Driven Development for Embedded C.  I flattened
 the structure so that there are no projects inside of projects.
 
+Also I don't provide VisualStudio support here anymore.  So the instructions are mainly for gcc/clang, with one small section on VS.
+
 -----------------------------------------
 Instructions for building the book's code
 -----------------------------------------
@@ -49,22 +51,18 @@ You should end up with this directory structure:
 
 5) Build the examples
 
--------------
-For gcc/clang users
--------------
-Build all examples
-
 ```
 % cd /path/to/code/root
 % make
 ```
 
-Clean all
+To do a clean build
 
 ```
 % cd /path/to/code/root
-% make
+% make clean all
 ```
+
 To make a specific project from the command line (code-t0 for example)
 
 ```
@@ -102,8 +100,7 @@ export CPPUTEST_WARNINGFLAGS="-Wno-reserved-id-macro -Wno-keyword-macro"
 
 Notice that addong "no-" to the warning flags from the error output disables that warning.  Generally this can be used to disable any new warning that comes up.
 
-Run make again.  Once you clear the warnings you should get a clean build. You could add this to `CppUTestCompileFlags.mk`.
-
+Run make again.  Once you clear the warnings you should get a clean build. You could add any of your needed compiler flag setting to `CppUTestCompileFlags.mk`.
 
 ### Unknown warnings in gcc/clang
 
@@ -112,23 +109,16 @@ If your compiler does not support some warning flag in the released makefiles, y
 -----------------
 For eclipse users
 -----------------
-    Here's how to load the projects into eclipse:
-    
-    1) Install eclipse/cdt
-    2) Select the /path/to/code/root directory as the workspace    
-    3) Import each project using:
-        File/Import.../General/Existing Project into Workspace
-    4) Browse, but do not change the directory. Accept the directory
-    5) The projects will be list, accept them.
-    6) Enjoy
+You should be able to import the whoel directory tree as a project.  Make sure to use the options for a makefile project.   You do not want eclipse managing this unit test build for you.
 
 -----------------------
 For visual studio users
 -----------------------
-    The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date.
-    I may work on this.  If you want to make Visual Studio support files for some or all of
-    the projects, please fork the repo make the changes and send me a pull request.
+The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date. VisualStudion usually can upgrade those.  If not and you are knowledgable about VS you should be able to get the code to build without a lot of trouble.
 
+You'll want to first build CppUTest and then define CPPUTEST_HOME in your environment variables.  VS must be restarted for it to see CPPUTEST_HOME.  You may have to adjust how the book code test projects reference the library holding CppUTest.  Get code-t0 to work first, then the others will be easier.
+
+If you want to make Visual Studio support files for all the projects, please fork the repo make the changes and send me a pull request.
 
 6) Reading the code
 
