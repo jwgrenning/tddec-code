@@ -29,5 +29,5 @@
 
 void explodesInTestEnvironment(void * p)
 {
-	assert(p == "Explode - intercepted call that cannot be made in test environment");
+	assert(0 == "Explode - intercepted call that cannot be made in test environment");
 }
