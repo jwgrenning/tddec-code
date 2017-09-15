@@ -24,9 +24,6 @@ INCLUDE_DIRS =\
   .\
   $(CPPUTEST_HOME)/include\
   $(PROJECT_HOME_DIR)/include/LedDriver\
-  
-#CPPUTEST_WARNINGFLAGS += -pedantic-errors -Wconversion -Wshadow  -Wextra
-CPPUTEST_WARNINGFLAGS += -Wall -Werror -Wswitch-default -Wswitch-enum 
 
-
+include ../CppUTestCompileFlags.mk
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

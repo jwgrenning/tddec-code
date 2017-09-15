@@ -14,19 +14,9 @@ PROJECT_HOME_DIR = .
 
 CPP_PLATFORM = Gcc
 
-CPPUTEST_WARNINGFLAGS += -Wall 
-CPPUTEST_WARNINGFLAGS += -Werror 
-CPPUTEST_WARNINGFLAGS += -Wswitch-default 
-CPPUTEST_WARNINGFLAGS += -Wswitch-enum
-CPPUTEST_WARNINGFLAGS += -Wno-documentation
-CPPUTEST_CFLAGS += -Wextra 
-CPPUTEST_CFLAGS += -pedantic 
-CPPUTEST_CFLAGS += -Wstrict-prototypes
-
 SRC_DIRS = \
 	src/util\
 	src/HomeAutomation\
-
 
 TEST_SRC_DIRS = \
 	tests \
@@ -38,5 +28,5 @@ INCLUDE_DIRS =\
   include/*\
   mocks
   
-
+include ../CppUTestCompileFlags.mk
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

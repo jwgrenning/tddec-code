@@ -37,4 +37,5 @@ Debug
 *.cache
 *.user
 RemoteSystemsTempFiles/*
+*.sublime*
 
