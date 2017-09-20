@@ -1,0 +1,9 @@
+FROM gcc:7
+
+ENV CPPUTEST_HOME=/usr/src/cpputest
+
+ADD cpputest /usr/src/cpputest
+
+WORKDIR /usr/src/cpputest
+
+RUN ./autogen.sh && ./configure && make tdd

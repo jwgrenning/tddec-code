@@ -31,5 +31,7 @@ INCLUDE_DIRS =\
   include/devices\
   include/MyOS\
   
+ LD_LIBRARIES += -lpthread
+ 
 include ../CppUTestCompileFlags.mk
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

@@ -1,0 +1,6 @@
+Add cpputest as a submodule
+```
+git submodule add git@github.com:cpputest/cpputest.git
+cat .gitmodules
+git commit -m "Added cpputest as a submodule"
+```
