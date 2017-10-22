@@ -6,6 +6,7 @@ CPPUTEST_WARNINGFLAGS += -Wno-covered-switch-default
 CPPUTEST_WARNINGFLAGS += -Wno-reserved-id-macro
 CPPUTEST_WARNINGFLAGS += -Wno-keyword-macro
 CPPUTEST_WARNINGFLAGS += -Wno-documentation
+CPPUTEST_WARNINGFLAGS += -Wno-missing-noreturn
 endif
 
 CPPUTEST_WARNINGFLAGS += -Wall 
