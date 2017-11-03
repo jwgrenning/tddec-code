@@ -16,7 +16,7 @@ With the ever changing C/C++ environments, it has been a challenge to keep
 the TDD-EC code building.  To make it easy to get started I'm using
 Docker to take out the guess work.
 
-A cool think about using Docker is that you don't have to install other 
+A cool thing about using Docker is that you don't have to install other 
 compilers on your system (except docker).  The other compiler and tools
 are hidden in the docker container.
 
@@ -55,9 +55,10 @@ From the mac, linux or cygwin command line (with docker running)
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
 WORKING_DIR=/usr/src/mydir
+export CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker pull gcc:7
 docker images
-docker run -it  -v $MOUNT_DIR -w $WORKING_DIR  gcc:7 gcc -v
+docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 gcc -v
 ```
 
 ####Build CppUTest and the TDD-EC book code
@@ -67,7 +68,8 @@ From the mac, linux or cygwin command line (with docker running)
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
 WORKING_DIR=/usr/src/mydir
-docker run -it  -v $MOUNT_DIR -w $WORKING_DIR  gcc:7 make
+export CPPUTEST_HOME=$WORKING_DIR/cpputest
+docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
 
 ####Build any sub-project from a command line
@@ -77,13 +79,12 @@ From the mac, linux or cygwin command line (with docker running)
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
 WORKING_DIR=/usr/src/mydir
-docker run -it  -v $MOUNT_DIR -w $WORKING_DIR  gcc:7 /bin/bash
+docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
 ```
 
 From the docker container bash prompt
 
 ```
-export CPPUTEST_HOME=$(pwd)/cpputest
 cd code-t2
 make
 ```

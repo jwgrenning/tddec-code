@@ -1,7 +1,4 @@
-# Prerequisites:
-#	CppUTest built with extensions
-export CPPUTEST_HOME = $(PWD)/cpputest
-	
+
 all: cpputest
 	@echo CPPUTEST_HOME is $(CPPUTEST_HOME)
 	make -i -C code
