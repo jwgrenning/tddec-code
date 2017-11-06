@@ -14,29 +14,26 @@ the TDD-EC code building.  To make it easy to get started I'm using
 Docker to take out the guess work.
 
 A cool thing about using Docker is that you don't have to install other 
-compilers on your system (except docker).  The other compiler and tools
-are hidden in the docker container.
+compilers on your system, though you do have to install docker.  The
+compilers and tools are hidden in the docker container.
 
 ####  Install Docker
-I use a Mac, so I've installed docker for Mac. It was easy.  I think it is 
-a bit more involved for windows as VirtualBox is also needed.
+I use a Mac, so I've installed docker for Mac. It was easy.  I expoect the 
+Linux install to also be easy.  For windows, you'll need either to Docker
+or Docker Toolbox.  You'll also need a 64 bit windows. (I saw a rather
+involved 32 bit windows install).
 
 You might be thinking, why should I go to all this trouble?  You should 
-becasue its not that much trouble and then you will have a great unit test 
-environment.
+becasue it's not that much trouble and then you will have a great unit test 
+environment that does not interfer with your native environment.
 
 [Docker Install Information](https://docs.docker.com/engine/installation/)
-
-Docker is great for this as the container you run your code through has exactly
-what you need for unit testing.
-
-If you are using windows, you'll need either to install Docker or Docker Toolbox. You'll also need a 64 bit windows install.
 
 #### Clone tddec-code repo
 You'll need to clone this repo because it includes a `git submodule` containing
 cpputest.
 
-From the mac, linux or cygwin command line
+From the Mac or Linux command line
 
 ```
 cd ~/myprojects
@@ -49,7 +46,7 @@ Now you have this code and cpputest source code.
 
 #### Get gcc version 7 into docker
 
-From the mac, linux or cygwin command line (with docker running)
+From the Mac or Linux command line (with docker running)
 
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
@@ -60,9 +57,13 @@ docker images
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 gcc -v
 ```
 
+Your current working directory (`$PWD`) is mapped to a virtual directory 
+in the container called `/use/src/mydir`.  That directory lives in the 
+container and in your native environment.
+
 #### Build CppUTest and the TDD-EC book code
 
-From the mac, linux or cygwin command line (with docker running)
+From the Mac or Linux command line (with docker running)
 
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
@@ -73,7 +74,7 @@ docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 
 #### Build any sub-project from a command line
 
-From the mac, linux or cygwin command line (with docker running)
+From the Mac or Linux command line (with docker running) (with docker running)
 
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
@@ -89,16 +90,20 @@ make
 ```
 
 You can now play to your heart content and use this setup to bootstrap your own
-test environmentfigure that out.
+test environmentfigure that out.  You can make changes to the `code-t2` files, 
+flip over to the Docker command line and run make.
 
-Instead of `gcc:7`, you can try other versions of gcc or clang.  For now you are 
-on your own in those other environments.
+Instead of `gcc:7`, you can try other versions of gcc or clang if you like.
+For now you are on your own in those other environments.
 
 ---
 ---
 ---
 
-###If you want to go it the old way, without docker...
+### If you want to go it the old way, without docker...
+---
+---
+---
 
 The CppUTest install has changed a lot since my book was written.  So you'll have 
 to install CppUTest locally for use with the book code.
