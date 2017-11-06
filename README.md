@@ -10,7 +10,7 @@ the structure so that there are no projects inside of projects.
 Also I don't provide VisualStudio support files here anymore.  So 
 the instructions are mainly for gcc/clang, with one small section on VS.
 
-####Instructions for building the book's code with Docker
+#### Instructions for building the book's code with Docker
 
 With the ever changing C/C++ environments, it has been a challenge to keep
 the TDD-EC code building.  To make it easy to get started I'm using
@@ -20,7 +20,7 @@ A cool thing about using Docker is that you don't have to install other
 compilers on your system (except docker).  The other compiler and tools
 are hidden in the docker container.
 
-#### Install Docker
+####  Install Docker
 I use a Mac, so I've installed docker for Mac. It was easy.  I think it is 
 a bit more involved for windows as VirtualBox is also needed.
 
@@ -33,7 +33,7 @@ environment.
 Docker is great for this as the container you run your code through has exactly
 what you need for unit testing.
 
-####Clone tddec-code repo
+#### Clone tddec-code repo
 You'll need to clone this repo because it includes a `git submodule` containing
 cpputest.
 
@@ -48,7 +48,7 @@ git submodule update --init
 
 Now you have this code and cpputest source code.
 
-####Get gcc version 7 into docker
+#### Get gcc version 7 into docker
 
 From the mac, linux or cygwin command line (with docker running)
 
@@ -61,7 +61,7 @@ docker images
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 gcc -v
 ```
 
-####Build CppUTest and the TDD-EC book code
+#### Build CppUTest and the TDD-EC book code
 
 From the mac, linux or cygwin command line (with docker running)
 
@@ -72,7 +72,7 @@ export CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
 
-####Build any sub-project from a command line
+#### Build any sub-project from a command line
 
 From the mac, linux or cygwin command line (with docker running)
 
