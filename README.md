@@ -33,6 +33,8 @@ environment.
 Docker is great for this as the container you run your code through has exactly
 what you need for unit testing.
 
+If you are using windows, you'll need either to install Docker or Docker Toolbox. You'll also need a 64 bit windows install.
+
 #### Clone tddec-code repo
 You'll need to clone this repo because it includes a `git submodule` containing
 cpputest.
@@ -95,6 +97,8 @@ test environmentfigure that out.
 Instead of `gcc:7`, you can try other versions of gcc or clang.  For now you are 
 on your own in those other environments.
 
+---
+---
 ---
 
 ###If you want to go it the old way, without docker...
