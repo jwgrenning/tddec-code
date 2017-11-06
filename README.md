@@ -7,9 +7,6 @@ This directory structure is not exactly the same as the structure
 of the code in Test-Driven Development for Embedded C.  I flattened
 the structure so that there are no projects inside of projects.
 
-Also I don't provide VisualStudio support files here anymore.  So 
-the instructions are mainly for gcc/clang, with one small section on VS.
-
 #### Instructions for building the book's code with Docker
 
 With the ever changing C/C++ environments, it has been a challenge to keep
