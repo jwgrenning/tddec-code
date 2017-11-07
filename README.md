@@ -24,7 +24,7 @@ or Docker Toolbox.  You'll also need a 64 bit windows. (I saw a rather
 involved 32 bit windows install).
 
 You might be thinking, why should I go to all this trouble?  You should 
-becasue it's not that much trouble and then you will have a great unit test 
+because it's not that much trouble and then you will have a great unit test 
 environment that does not interfer with your native environment.
 
 [Docker Install Information](https://docs.docker.com/engine/installation/)
@@ -40,6 +40,12 @@ cd ~/myprojects
 git clone https://github.com/jwgrenning/tddec-code.git
 cd tddec-code
 git submodule update --init
+```
+
+or if you prefer a one liner:
+
+```
+git clone --recursive -j8 https://github.com/jwgrenning/tddec-code.git
 ```
 
 Now you have this code and cpputest source code.
@@ -82,7 +88,14 @@ WORKING_DIR=/usr/src/mydir
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
 ```
 
-From the docker container bash prompt
+To get into the docker container itself
+```
+MOUNT_DIR=$PWD:/usr/src/mydir
+WORKING_DIR=/usr/src/mydir
+docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 bash
+```
+
+which then allows you to
 
 ```
 cd code-t2
