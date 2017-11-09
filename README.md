@@ -136,8 +136,8 @@ export CPPUTEST_HOME=~/tools/cpputest
 Under Windows you can use the control panel or `setx` utility to set the
 environment variable.  Make sure to restart your IDE, or terminal window.
 
-4) Unzip the code into some directory /path/to/code/root. Make sure the path contains no spaces.
-You should end up with this directory structure:
+4) Unzip the code into some directory /path/to/code/root. Make sure the path
+contains no spaces. You should end up with this directory structure:
 
 ```
     /path/to/code/root/code
@@ -171,7 +171,8 @@ make
 
 ### Warning problems with gcc/clang
 
-With the compilers adding more and more static analysis, each compiler may issue warnings like this:
+With the compilers adding more and more static analysis, each compiler may issue
+warnings like this:
 
 ```
 #undef __USE_MINGW_ANSI_STDIO
@@ -188,44 +189,63 @@ In file included from <built-in>:1:
 
 ```
 
-The `-Werror` flag tells the compiler to treat warning as errors, causing the compile to fail.  You could turn that off, but before you do that, you can tell the compiler to not complain about specific errors.  
+The `-Werror` flag tells the compiler to treat warning as errors, causing the
+compile to fail.  You could turn that off, but before you do that, you can tell
+the compiler to not complain about specific errors.  
 
-For the two errors shown in the above error output, from the (cygwin, mongx, linux, mac) command line set the initial value for `CPPUTEST_WARNINGFLAGS` like this:
+For the two errors shown in the above error output, from the (cygwin, mongx,
+linux, mac) command line set the initial value for `CPPUTEST_WARNINGFLAGS` like
+this:
 
 ```
 export CPPUTEST_WARNINGFLAGS="-Wno-reserved-id-macro -Wno-keyword-macro"
 
 ```
 
-Notice that adding "no-" to the warning flags from the error output disables that warning.  Generally this can be used to disable any new warning that comes up.
+Notice that adding "no-" to the warning flags from the error output disables
+that warning.  Generally this can be used to disable any new warning that comes
+up.
 
-Run make again.  Once you clear the warnings you should get a clean build. You could add any of your needed compiler flag setting to `CppUTestCompileFlags.mk`.
+Run make again.  Once you clear the warnings you should get a clean build. You
+could add any of your needed compiler flag setting to `CppUTestCompileFlags.mk`.
 
 ### Unknown warnings in gcc/clang
 
-If your compiler does not support some warning flag in the released makefiles, you can get an error about it.  The `-Wno-unknown-warning-option` is in `CppUTestCompileFlags.mk`, but may not be supported.  You'll need to comment out each flag the compiler complains about in `CppUTestCompileFlags.mk`.
+If your compiler does not support some warning flag in the released makefiles,
+you can get an error about it.  The `-Wno-unknown-warning-option` is in
+`CppUTestCompileFlags.mk`, but may not be supported.  You'll need to comment out
+each flag the compiler complains about in `CppUTestCompileFlags.mk`.
 
 -----------------
 For eclipse users
 -----------------
-You should be able to import the whole directory tree as a project.  Make sure to use the options for a makefile project.   You do not want eclipse managing this unit test build for you.
+You should be able to import the whole directory tree as a project.  Make sure
+to use the options for a makefile project. You do not want eclipse managing this
+unit test build for you.
 
 -----------------------
 For Visual Studio users
 -----------------------
-The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date. VisualStudio usually can upgrade those.  If not and you are knowledgeable about VS you should be able to get the code to build without a lot of trouble.
+The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out
+of date. VisualStudio usually can upgrade those.  If not and you are
+knowledgeable about VS you should be able to get the code to build without a lot
+of trouble.
 
-You'll want to first build CppUTest and then define CPPUTEST_HOME in your environment variables.  VS must be restarted for it to see CPPUTEST_HOME.  You may have to adjust how the book code test projects reference the library holding CppUTest.  Get code-t0 to work first, then the others will be easier.
+You'll want to first build CppUTest and then define CPPUTEST_HOME in your
+environment variables.  VS must be restarted for it to see CPPUTEST_HOME.  You
+may have to adjust how the book code test projects reference the library holding
+CppUTest.  Get code-t0 to work first, then the others will be easier.
 
-If you want to make Visual Studio support files for all the projects, please fork the repo make the changes and send me a pull request.
+If you want to make Visual Studio support files for all the projects, please
+fork the repo make the changes and send me a pull request.
 
 6) Reading the code
 
 -------------
 For everybody
 -------------
-When you look at the downloaded code, you will see some distracting comments throughout the code
-that look like this:
+When you look at the downloaded code, you will see some distracting comments
+throughout the code that look like this:
 
     /* START: codeIncludeTag */
     ...
@@ -270,4 +290,3 @@ throwtheswitch.com.  If you want a supported version, please go to throwtheswitc
 
 
 Please report any problems on the book's forum: www.pragprog.com/titles/jgade.
-
