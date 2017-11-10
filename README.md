@@ -1,5 +1,4 @@
-tddec-code
-==========
+# tddec-code
 
 Book code for Test-Driven Development for Embedded C
 
@@ -7,7 +6,7 @@ This directory structure is not exactly the same as the structure
 of the code in Test-Driven Development for Embedded C.  I flattened
 the structure so that there are no projects inside of projects.
 
-#### Instructions for building the book's code with Docker
+## Building the book's code with Docker
 
 With the ever changing C/C++ environments, it has been a challenge to keep
 the TDD-EC code building.  To make it easy to get started I'm using
@@ -17,7 +16,7 @@ A cool thing about using Docker is that you don't have to install other
 compilers on your system, though you do have to install docker.  The
 compilers and tools are hidden in the docker container.
 
-####  Install Docker
+### 1. Install Docker
 I use a Mac, so I've installed docker for Mac. It was easy.  I expect the 
 Linux install to also be easy.  For Windows you can either use the newer Docker
 for Windows, if you have Hyper-V, or the older VirtualBox based Docker Toolbox.
@@ -29,7 +28,7 @@ environment that does not interfere with your native environment.
 
 [Docker Install Information](https://docs.docker.com/engine/installation/)
 
-#### Clone tddec-code repo
+### 2. Clone tddec-code repo
 You'll need to clone this repo because it includes a `git submodule` containing
 cpputest.
 
@@ -43,7 +42,7 @@ cd tddec-code
 
 Now you have this code and cpputest source code.
 
-#### Get gcc version 7 into docker
+### 3. Get gcc version 7 into docker
 
 From the Mac or Linux command line (with docker running)
 
@@ -60,7 +59,7 @@ Your current working directory (`$PWD`) is mapped to a virtual directory
 in the container called `/usr/src/mydir`.  That directory lives in the 
 container and in your native environment.
 
-#### Build CppUTest and the TDD-EC book code
+### 4. Build CppUTest and the TDD-EC book code
 
 From the Mac or Linux command line (with docker running)
 
@@ -71,9 +70,9 @@ export CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
 
-#### Build any sub-project from a command line
+### 5. Build any sub-project from a command line
 
-From the Mac or Linux command line (with docker running)
+First open a shell inside the running container:
 
 ```
 MOUNT_DIR=$PWD:/usr/src/mydir
@@ -81,14 +80,7 @@ WORKING_DIR=/usr/src/mydir
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
 ```
 
-To get into the docker container itself
-```
-MOUNT_DIR=$PWD:/usr/src/mydir
-WORKING_DIR=/usr/src/mydir
-docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 bash
-```
-
-which then allows you to
+You can then build a project with:
 
 ```
 cd code-t2
@@ -102,23 +94,18 @@ flip over to the Docker command line and run make.
 Instead of `gcc:7`, you can try other versions of gcc or clang if you like.
 For now you are on your own in those other environments.
 
----
----
----
-
-### If you want to go it the old way, without docker...
----
----
----
+## Building it the old way, without docker...
 
 The CppUTest install has changed a lot since my book was written.  So you'll have 
 to install CppUTest locally for use with the book code.
 
-1) Download CppUTest from cpputest.org. Put CppUTest somewhere like
-    `~/tools/cpputest`
+### 1. Download CppUTest from cpputest.org.
 
-2) Build CppUTest locally using these instructions not the instructions 
-from cpputest.org.
+Put CppUTest somewhere like `~/tools/cpputest`
+
+### 2. Build CppUTest locally
+
+Use these instructions not the instructions from cpputest.org.
 
 ```
 cd ~/tools/cpputest
@@ -127,8 +114,9 @@ autoreconf . -i
 make tdd
 ```
 
-3) Define an environment variable to point to where you put CppUTest, like
+### 3. Define an environment variable to point to where you put CppUTest
 
+For example:
 ```
 export CPPUTEST_HOME=~/tools/cpputest
 ```
@@ -136,8 +124,9 @@ export CPPUTEST_HOME=~/tools/cpputest
 Under Windows you can use the control panel or `setx` utility to set the
 environment variable.  Make sure to restart your IDE, or terminal window.
 
-4) Unzip the code into some directory /path/to/code/root. Make sure the path
-contains no spaces. You should end up with this directory structure:
+### 4. Unzip the code into some directory /path/to/code/root
+
+Make sure the path contains no spaces. You should end up with this directory structure:
 
 ```
     /path/to/code/root/code
@@ -148,7 +137,7 @@ contains no spaces. You should end up with this directory structure:
     /path/to/code/root/SandBox
 ```
 
-5) Build the examples
+### 5. Build the examples
 
 ```
 % cd /path/to/code/root
@@ -169,7 +158,7 @@ cd /path/to/code/root/code-t0
 make
 ```
 
-### Warning problems with gcc/clang
+#### Warning problems with gcc/clang
 
 With the compilers adding more and more static analysis, each compiler may issue
 warnings like this:
@@ -209,23 +198,21 @@ up.
 Run make again.  Once you clear the warnings you should get a clean build. You
 could add any of your needed compiler flag setting to `CppUTestCompileFlags.mk`.
 
-### Unknown warnings in gcc/clang
+#### Unknown warnings in gcc/clang
 
 If your compiler does not support some warning flag in the released makefiles,
 you can get an error about it.  The `-Wno-unknown-warning-option` is in
 `CppUTestCompileFlags.mk`, but may not be supported.  You'll need to comment out
 each flag the compiler complains about in `CppUTestCompileFlags.mk`.
 
------------------
-For eclipse users
------------------
+#### For eclipse users
+
 You should be able to import the whole directory tree as a project.  Make sure
 to use the options for a makefile project. You do not want eclipse managing this
 unit test build for you.
 
------------------------
-For Visual Studio users
------------------------
+#### For Visual Studio users
+
 The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out
 of date. VisualStudio usually can upgrade those.  If not and you are
 knowledgeable about VS you should be able to get the code to build without a lot
@@ -239,11 +226,10 @@ CppUTest.  Get code-t0 to work first, then the others will be easier.
 If you want to make Visual Studio support files for all the projects, please
 fork the repo make the changes and send me a pull request.
 
-6) Reading the code
+### 6. Reading the code
 
--------------
-For everybody
--------------
+#### For everybody
+
 When you look at the downloaded code, you will see some distracting comments
 throughout the code that look like this:
 
@@ -273,20 +259,17 @@ not have code include tags.  In this book, the code is always evolving.  I've le
 the latest version at the top of the file and move the intermediate code snippets 
 further down the file.    
 
-7) Experiment
+### 7. Experiment
 
------------------
-SandBox - project
------------------
+## SandBox - project
 
 Here is a project ready for you to experiment with CppUTest any my version of Unity
 
---------------------------
-About Unity test framework
---------------------------
+## About Unity test framework
 
 The version in the book is not the supported version maintained by the guys at
 throwtheswitch.com.  If you want a supported version, please go to throwtheswitch.com
 
+## Support
 
 Please report any problems on the book's forum: www.pragprog.com/titles/jgade.
