@@ -35,6 +35,7 @@ If you do find differences or errors please let me know.
 #### Get a gcc version 7 docker image
 
 From the Mac or Linux command line (with docker running), do these commands.
+Depending on how your account is setup, you may need to run docker as `sudo`.
 
 ```
 docker pull gcc:7
