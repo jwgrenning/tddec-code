@@ -19,16 +19,16 @@ compilers and tools are hidden in the docker container.
 
 ####  Install Docker
 I use a Mac, so I've installed docker for Mac. It was easy.  I expect the 
-Linux install to also be easy.  For windows, you'll need either to Docker
-or Docker Toolbox.  You'll also need a 64 bit windows. (I saw a rather
-involved 32 bit windows install).
+Linux install to also be easy.  For Windows you can either use the newer Docker
+for Windows, if you have Hyper-V, or the older VirtualBox based Docker Toolbox.
+Ideally you should use 64-bit Windows. (If you get this
+workig with Windows and Docker, please contribute your instructions.)
 
 You might be thinking, why should I go to all this trouble?  You should 
-becasue it's not that much trouble and then you will have a great unit test 
-environment that does not interfer with your native environment.
+because it's not that much trouble and then you will have a great unit test 
+environment that does not interfere with your native environment.
 
-If you do find differences or errors please let me know.  If you get this
-workig with Windows and Docker, please contribute your instructions.
+If you do find differences or errors please let me know.  
 
 [Docker Install Information](https://docs.docker.com/engine/installation/)
 
@@ -88,7 +88,7 @@ docker container as well as in your native environment.
 
 #### Build any sub-project from a command line
 
-From the Mac or Linux command line (with docker running) (with docker running)
+From the Mac or Linux command line (with docker running)
 
 ```
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
@@ -100,7 +100,6 @@ From the docker container bash prompt, go to any subdirectory like this:
 cd code-t2
 make
 ```
-
 You can now play to your hearts content and use this setup to bootstrap your own
 test environmentfigure that out.  You can make changes to the `code-t2` files, 
 flip over to the Docker command line and run make.
@@ -140,8 +139,8 @@ make tdd
 export CPPUTEST_HOME=~/tools/cpputest
 ```
 
-Under windows you can use the control panel to set the environment variable.  Make sure
-to restart your IDE, or terminal window.
+Under Windows you can use the control panel or `setx` utility to set the
+environment variable.  Make sure to restart your IDE, or terminal window.
 
 4) Unzip the code into some directory /path/to/code/root. Make sure the path contains no spaces.
 You should end up with this directory structure:
@@ -197,14 +196,14 @@ In file included from <built-in>:1:
 
 The `-Werror` flag tells the compiler to treat warning as errors, causing the compile to fail.  You could turn that off, but before you do that, you can tell the compiler to not complain about specific errors.  
 
-For the two errors shown in the above error output, from the (cygwin,mongx, linux, mac) command line set the initial value for `CPPUTEST_WARNINGFLAGS` like this:
+For the two errors shown in the above error output, from the (cygwin, mongx, linux, mac) command line set the initial value for `CPPUTEST_WARNINGFLAGS` like this:
 
 ```
 export CPPUTEST_WARNINGFLAGS="-Wno-reserved-id-macro -Wno-keyword-macro"
 
 ```
 
-Notice that addong "no-" to the warning flags from the error output disables that warning.  Generally this can be used to disable any new warning that comes up.
+Notice that adding "no-" to the warning flags from the error output disables that warning.  Generally this can be used to disable any new warning that comes up.
 
 Run make again.  Once you clear the warnings you should get a clean build. You could add any of your needed compiler flag setting to `CppUTestCompileFlags.mk`.
 
@@ -215,12 +214,12 @@ If your compiler does not support some warning flag in the released makefiles, y
 -----------------
 For eclipse users
 -----------------
-You should be able to import the whoel directory tree as a project.  Make sure to use the options for a makefile project.   You do not want eclipse managing this unit test build for you.
+You should be able to import the whole directory tree as a project.  Make sure to use the options for a makefile project.   You do not want eclipse managing this unit test build for you.
 
 -----------------------
-For visual studio users
+For Visual Studio users
 -----------------------
-The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date. VisualStudion usually can upgrade those.  If not and you are knowledgable about VS you should be able to get the code to build without a lot of trouble.
+The ".dsp" and ".dsw" files provided for Visual Studio version 6 are likely out of date. VisualStudio usually can upgrade those.  If not and you are knowledgeable about VS you should be able to get the code to build without a lot of trouble.
 
 You'll want to first build CppUTest and then define CPPUTEST_HOME in your environment variables.  VS must be restarted for it to see CPPUTEST_HOME.  You may have to adjust how the book code test projects reference the library holding CppUTest.  Get code-t0 to work first, then the others will be easier.
 
