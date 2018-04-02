@@ -83,7 +83,7 @@ docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
 
 Your current working directory (`$PWD`) is mounted as a volume 
-in the container called `/usr/src`.  That directory lives in the 
+in the container using directory `/usr/src`.  That directory lives in the 
 docker container as well as in your native environment.
 
 #### Build any sub-project from a command line
