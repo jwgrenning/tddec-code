@@ -18,7 +18,7 @@ compilers on your system, though you do have to install docker.  The
 compilers and tools are hidden in the docker container.
 
 ####  Install Docker
-I use a Mac, so I've installed docker for Mac. It was easy.  I expoect the 
+I use a Mac, so I've installed docker for Mac. It was easy.  I expect the 
 Linux install to also be easy.  For windows, you'll need either to Docker
 or Docker Toolbox.  You'll also need a 64 bit windows. (I saw a rather
 involved 32 bit windows install).
@@ -27,69 +27,81 @@ You might be thinking, why should I go to all this trouble?  You should
 becasue it's not that much trouble and then you will have a great unit test 
 environment that does not interfer with your native environment.
 
+If you do find differences or errors please let me know.  If you get this
+workig with Windows and Docker, please contribute your instructions.
+
 [Docker Install Information](https://docs.docker.com/engine/installation/)
 
-#### Clone tddec-code repo
-You'll need to clone this repo because it includes a `git submodule` containing
-cpputest.
+#### Get a gcc version 7 docker image
 
-From the Mac or Linux command line
+From the Mac or Linux command line (with docker running), do these commands.
 
 ```
-cd ~/myprojects
-git clone https://github.com/jwgrenning/tddec-code.git
-cd tddec-code
-git submodule update --init
-```
-
-Now you have this code and cpputest source code.
-
-#### Get gcc version 7 into docker
-
-From the Mac or Linux command line (with docker running)
-
-```
-MOUNT_DIR=$PWD:/usr/src/mydir
-WORKING_DIR=/usr/src/mydir
-export CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker pull gcc:7
-docker images
-docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 gcc -v
+docker run gcc:7 gcc -v
 ```
 
-Your current working directory (`$PWD`) is mapped to a virtual directory 
-in the container called `/use/src/mydir`.  That directory lives in the 
-container and in your native environment.
-
-#### Build CppUTest and the TDD-EC book code
-
-From the Mac or Linux command line (with docker running)
+You should see something like this for the gcc version report:
 
 ```
-MOUNT_DIR=$PWD:/usr/src/mydir
-WORKING_DIR=/usr/src/mydir
-export CPPUTEST_HOME=$WORKING_DIR/cpputest
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-linux-gnu/7.3.0/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: /usr/src/gcc/configure --build=x86_64-linux-gnu --disable-multilib --enable-languages=c,c++,fortran,go
+Thread model: posix
+gcc version 7.3.0 (GCC)
+```
+
+#### Clone tddec-code repo
+You'll need to clone this repo (not download a zip or tarball) because the repo
+includes the CppUTest `git submodule`.
+
+From the Mac or Linux command line, get tddec-code and cpputest. Use a different 
+directory if you like.
+
+```
+MYPROJECTS=myprojects
+mkdir -p $MYPROJECTS
+cd $MYPROJECTS
+git clone --recurse-submodules https://github.com/jwgrenning/tddec-code.git
+```
+
+You should be able to see the tddec-code contents including the cpputest contents.
+
+#### Build CppUTest and the TDD-EC book code in the Docker container.
+
+From the Mac or Linux command line (with docker running), run these commands.  You will see
+CppUTest build and run its tests and then the TDD-EC book code will build and run
+its tests.
+
+```
+MOUNT_DIR=$PWD:/usr/src
+WORKING_DIR=/usr/src/tddec-code
+CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
+
+Your current working directory (`$PWD`) is mounted as a volume 
+in the container called `/usr/src`.  That directory lives in the 
+docker container as well as in your native environment.
 
 #### Build any sub-project from a command line
 
 From the Mac or Linux command line (with docker running) (with docker running)
 
 ```
-MOUNT_DIR=$PWD:/usr/src/mydir
-WORKING_DIR=/usr/src/mydir
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
 ```
 
-From the docker container bash prompt
+From the docker container bash prompt, go to any subdirectory like this:
 
 ```
 cd code-t2
 make
 ```
 
-You can now play to your heart content and use this setup to bootstrap your own
+You can now play to your hearts content and use this setup to bootstrap your own
 test environmentfigure that out.  You can make changes to the `code-t2` files, 
 flip over to the Docker command line and run make.
 
@@ -100,7 +112,8 @@ For now you are on your own in those other environments.
 ---
 ---
 
-### If you want to go it the old way, without docker...
+### If you want to try without docker, you might run into the problem of
+moving targets for CppUTest, gcc and clang.
 ---
 ---
 ---
@@ -264,4 +277,5 @@ throwtheswitch.com.  If you want a supported version, please go to throwtheswitc
 
 
 Please report any problems on the book's forum: www.pragprog.com/titles/jgade.
+
 
