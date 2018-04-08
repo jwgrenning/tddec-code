@@ -79,7 +79,7 @@ its tests.
 ```
 MOUNT_DIR=$PWD:/usr/src
 WORKING_DIR=/usr/src/tddec-code
-CPPUTEST_HOME=$WORKING_DIR/cpputest
+export CPPUTEST_HOME=$WORKING_DIR/cpputest
 docker run -it  -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 make
 ```
 
