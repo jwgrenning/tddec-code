@@ -87,12 +87,36 @@ Your current working directory (`$PWD`) is mounted as a volume
 in the container using directory `/usr/src`.  That directory lives in the 
 docker container as well as in your native environment.
 
+Or from the Windows cmd.exe shell (with docker running), run these commands.  You will see
+CppUTest build and run its tests and then the TDD-EC book code will build and run
+its tests.  It assumes you have pulled the sources into folder C:\Users\YourName\tddec-code.
+
+```
+set PWD=/c/Users/YourName
+set MOUNT_DIR=%PWD%:/usr/src
+set WORKING_DIR=/usr/src/tddec-code
+set CPPUTEST_HOME=%WORKING_DIR%/cpputest
+docker run -it  -v %MOUNT_DIR% -w %WORKING_DIR% -e CPPUTEST_HOME gcc:7 make
+```
+
+Your current working directory (`%PWD%`) is mounted as a volume 
+in the container using directory `/usr/src`.  That directory lives in the 
+docker container as well as in your native environment.
+
+
+
 #### Build any sub-project from a command line
 
 From the Mac or Linux command line (with docker running)
 
 ```
 docker run -it -v $MOUNT_DIR -w $WORKING_DIR -e CPPUTEST_HOME gcc:7 /bin/bash
+```
+
+Or from the Windows cmd.exe command line (with docker running)
+
+```
+docker run -it -v %MOUNT_DIR% -w %WORKING_DIR% -e CPPUTEST_HOME gcc:7 /bin/bash
 ```
 
 From the docker container bash prompt, go to any subdirectory like this:
